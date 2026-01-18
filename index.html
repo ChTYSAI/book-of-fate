@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Книга Судеб — Узнай своё предсказание</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Звёздный фон -->
+    <div class="stars"></div>
+    <div class="stars2"></div>
+    
+    <div class="container">
+        
+        <!-- ========== ЭКРАН 1: ВЫБОР ========== -->
+        <div id="selection-screen" class="screen active">
+            <div class="header">
+                <div class="moon-icon">☽</div>
+                <h1>Книга Судеб</h1>
+                <p class="tagline">Древняя мудрость для современного искателя</p>
+            </div>
+            
+            <div class="instruction-box">
+                <p>✨ Сосредоточься на своём вопросе или ситуации</p>
+                <p>✨ Выбери тему, страницу и строку интуитивно</p>
+                <p>✨ Доверься первым числам, которые придут в голову</p>
+            </div>
+            
+            <!-- Выбор темы -->
+            <div class="selection-section">
+                <h2>Выбери тему послания</h2>
+                <div class="theme-buttons">
+                    <button class="theme-btn active" data-theme="prediction">
+                        <span class="theme-icon">🔮</span>
+                        <span class="theme-name">Предсказание</span>
+                        <span class="theme-desc">Что ждёт впереди</span>
+                    </button>
+                    <button class="theme-btn" data-theme="advice">
+                        <span class="theme-icon">💡</span>
+                        <span class="theme-name">Совет</span>
+                        <span class="theme-desc">Как поступить</span>
+                    </button>
+                    <button class="theme-btn" data-theme="wisdom">
+                        <span class="theme-icon">📜</span>
+                        <span class="theme-name">Мудрость</span>
+                        <span class="theme-desc">Глубокая истина</span>
+                    </button>
+                    <button class="theme-btn" data-theme="love">
+                        <span class="theme-icon">💕</span>
+                        <span class="theme-name">Любовь</span>
+                        <span class="theme-desc">Дела сердечные</span>
+                    </button>
+                    <button class="theme-btn" data-theme="career">
+                        <span class="theme-icon">⭐</span>
+                        <span class="theme-name">Карьера</span>
+                        <span class="theme-desc">Работа и успех</span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Выбор страницы и строки -->
+            <div class="selection-section">
+                <h2>Выбери страницу и строку</h2>
+                <div class="number-selection">
+                    <div class="control-group">
+                        <label for="page">📖 Страница</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="page" min="1" max="100" placeholder="?">
+                        </div>
+                        <span class="hint">от 1 до 100</span>
+                    </div>
+                    
+                    <div class="divider">✦</div>
+                    
+                    <div class="control-group">
+                        <label for="line">📝 Строка</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="line" min="1" max="25" placeholder="?">
+                        </div>
+                        <span class="hint">от 1 до 25</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Информация о книге -->
+            <div class="book-info">
+                <div class="info-item">
+                    <span class="info-number">100</span>
+                    <span class="info-label">страниц</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-number">25</span>
+                    <span class="info-label">строк на странице</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-number">2500</span>
+                    <span class="info-label">уникальных посланий</span>
+                </div>
+            </div>
+            
+            <button id="open-book" class="magic-button" disabled>
+                <span class="btn-text">✨ Открыть Книгу Судеб ✨</span>
+                <span class="btn-glow"></span>
+            </button>
+            
+            <p class="selected-info" id="selected-info"></p>
+        </div>
+
+        <!-- ========== ЭКРАН 2: КНИГА ========== -->
+        <div id="book-screen" class="screen">
+            <div class="book-container">
+                <div class="book" id="book">
+                    <!-- Обложка книги -->
+                    <div class="book-cover">
+                        <div class="cover-border">
+                            <div class="cover-content">
+                                <div class="cover-symbol top">☽ ★ ☀</div>
+                                <h2>Книга</h2>
+                                <h3>Судеб</h3>
+                                <div class="cover-ornament">❈ ❈ ❈</div>
+                                <div class="cover-symbol bottom">✦ ✦ ✦</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Страницы книги -->
+                    <div class="book-pages">
+                        <div class="page left-page">
+                            <div class="page-inner">
+                                <div class="page-ornament top">─── ✦ ───</div>
+                                <div class="theme-display">
+                                    <span class="theme-icon-large" id="theme-icon-display">🔮</span>
+                                    <span class="theme-name-display" id="theme-name-display">Предсказание</span>
+                                </div>
+                                <div class="page-decoration">
+                                    <p>Страница <span id="page-number-left">1</span></p>
+                                    <p>Строка <span id="line-number-display">1</span></p>
+                                </div>
+                                <div class="page-ornament bottom">─── ✦ ───</div>
+                                <div class="page-number left">✦</div>
+                            </div>
+                        </div>
+                        
+                        <div class="page right-page">
+                            <div class="page-inner">
+                                <div class="page-ornament top">─── ✦ ───</div>
+                                <div class="prediction-wrapper">
+                                    <div class="prediction-quote">"</div>
+                                    <p class="prediction-text" id="prediction"></p>
+                                    <div class="prediction-quote end">"</div>
+                                </div>
+                                <div class="page-ornament bottom">─── ✦ ───</div>
+                                <div class="page-number right" id="page-number-right">1</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <button id="share-btn" class="action-btn">
+                    📤 Поделиться
+                </button>
+                <button id="save-btn" class="action-btn">
+                    💾 Сохранить
+                </button>
+                <button id="close-book" class="action-btn primary">
+                    🔮 Новое предсказание
+                </button>
+            </div>
+        </div>
+        
+    </div>
+    
+    <!-- Уведомление -->
+    <div id="notification" class="notification">
+        <span id="notification-text"></span>
+    </div>
+
+    <script src="predictions.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

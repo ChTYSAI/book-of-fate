@@ -1,0 +1,671 @@
+/* ========== БАЗОВЫЕ СТИЛИ ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0a0a1a 0%, #1a1a3a 50%, #0a1628 100%);
+    font-family: 'Raleway', sans-serif;
+    color: #e0e0e0;
+    overflow-x: hidden;
+}
+
+/* ========== ЗВЁЗДНЫЙ ФОН ========== */
+.stars, .stars2 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+}
+
+.stars {
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, #fff, transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+        radial-gradient(2px 2px at 160px 120px, rgba(255,255,255,0.9), transparent),
+        radial-gradient(1px 1px at 230px 80px, #fff, transparent),
+        radial-gradient(2px 2px at 300px 150px, rgba(255,255,255,0.7), transparent);
+    background-size: 350px 350px;
+    animation: twinkle 5s ease-in-out infinite;
+}
+
+.stars2 {
+    background-image: 
+        radial-gradient(1px 1px at 50px 100px, #fff, transparent),
+        radial-gradient(1px 1px at 150px 50px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(2px 2px at 250px 180px, #fff, transparent);
+    background-size: 400px 400px;
+    animation: twinkle 7s ease-in-out infinite reverse;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+/* ========== КОНТЕЙНЕР ========== */
+.container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* ========== ЭКРАНЫ ========== */
+.screen {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 900px;
+    animation: fadeIn 0.6s ease;
+}
+
+.screen.active {
+    display: flex;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ========== ЗАГОЛОВОК ========== */
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.moon-icon {
+    font-size: 4rem;
+    margin-bottom: 10px;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    font-weight: 600;
+    color: #f0e68c;
+    text-shadow: 0 0 30px rgba(240, 230, 140, 0.5);
+    margin-bottom: 10px;
+}
+
+.tagline {
+    font-size: 1.1rem;
+    color: #a0a0c0;
+    font-weight: 300;
+}
+
+/* ========== ИНСТРУКЦИЯ ========== */
+.instruction-box {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 15px;
+    padding: 20px 30px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.instruction-box p {
+    margin: 8px 0;
+    color: #c0c0d0;
+    font-size: 0.95rem;
+}
+
+/* ========== СЕКЦИИ ВЫБОРА ========== */
+.selection-section {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.selection-section h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    color: #d4af37;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* ========== КНОПКИ ТЕМ ========== */
+.theme-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.theme-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(212, 175, 55, 0.3);
+    border-radius: 15px;
+    padding: 15px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 130px;
+}
+
+.theme-btn:hover {
+    background: rgba(212, 175, 55, 0.1);
+    border-color: rgba(212, 175, 55, 0.6);
+    transform: translateY(-3px);
+}
+
+.theme-btn.active {
+    background: rgba(212, 175, 55, 0.2);
+    border-color: #d4af37;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+}
+
+.theme-icon {
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+.theme-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: #f0e68c;
+    font-weight: 600;
+}
+
+.theme-desc {
+    font-size: 0.75rem;
+    color: #888;
+    margin-top: 4px;
+}
+
+/* ========== ВЫБОР ЧИСЕЛ ========== */
+.number-selection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.control-group label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    color: #d4af37;
+    margin-bottom: 10px;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.control-group input {
+    width: 100px;
+    padding: 15px;
+    font-size: 1.8rem;
+    text-align: center;
+    border: 2px solid rgba(212, 175, 55, 0.5);
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.3);
+    color: #f0e68c;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.control-group input:focus {
+    outline: none;
+    border-color: #d4af37;
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
+    transform: scale(1.05);
+}
+
+.control-group input::placeholder {
+    color: rgba(240, 230, 140, 0.3);
+}
+
+.hint {
+    margin-top: 8px;
+    font-size: 0.85rem;
+    color: #888;
+}
+
+.divider {
+    font-size: 1.5rem;
+    color: #d4af37;
+    margin-top: 20px;
+}
+
+/* ========== ИНФОРМАЦИЯ О КНИГЕ ========== */
+.book-info {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin: 30px 0;
+    flex-wrap: wrap;
+}
+
+.info-item {
+    text-align: center;
+}
+
+.info-number {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    color: #f0e68c;
+    font-weight: 700;
+}
+
+.info-label {
+    font-size: 0.85rem;
+    color: #888;
+}
+
+/* ========== КНОПКА ОТКРЫТИЯ ========== */
+.magic-button {
+    position: relative;
+    padding: 18px 50px;
+    font-size: 1.3rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    background: linear-gradient(135deg, #d4af37, #f0e68c, #d4af37);
+    background-size: 200% 200%;
+    border: none;
+    border-radius: 50px;
+    color: #1a1a2e;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.magic-button:not(:disabled):hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 40px rgba(212, 175, 55, 0.6);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.magic-button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.selected-info {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #a0a0c0;
+    min-height: 20px;
+}
+
+/* ========== КНИГА ========== */
+.book-container {
+    perspective: 2000px;
+    margin: 30px 0;
+}
+
+.book {
+    position: relative;
+    width: 700px;
+    height: 450px;
+    transform-style: preserve-3d;
+}
+
+.book-cover {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #5c3d2e, #8B4513, #6d4930);
+    border-radius: 5px 20px 20px 5px;
+    box-shadow: 
+        -10px 10px 30px rgba(0,0,0,0.5),
+        inset 0 0 80px rgba(0,0,0,0.3);
+    transform-origin: left center;
+    transition: transform 1.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cover-border {
+    width: 90%;
+    height: 90%;
+    border: 3px solid #d4af37;
+    border-radius: 5px 15px 15px 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cover-content {
+    text-align: center;
+    color: #d4af37;
+}
+
+.cover-symbol {
+    font-size: 1.5rem;
+    letter-spacing: 15px;
+    margin: 10px 0;
+}
+
+.cover-content h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.cover-content h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 400;
+    margin-top: -5px;
+}
+
+.cover-ornament {
+    font-size: 1.2rem;
+    margin: 15px 0;
+    letter-spacing: 10px;
+}
+
+.book.open .book-cover {
+    transform: rotateY(-165deg);
+}
+
+/* ========== СТРАНИЦЫ ========== */
+.book-pages {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    opacity: 0;
+    transition: opacity 0.5s ease 0.6s;
+    border-radius: 5px 15px 15px 5px;
+    overflow: hidden;
+}
+
+.book.open .book-pages {
+    opacity: 1;
+}
+
+.page {
+    flex: 1;
+    position: relative;
+}
+
+.page-inner {
+    height: 100%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.left-page {
+    background: linear-gradient(to right, #e8d9b5, #f4e4bc);
+    box-shadow: inset -15px 0 30px rgba(0,0,0,0.1);
+}
+
+.right-page {
+    background: linear-gradient(to left, #f5ecd7, #fdf5e6);
+    box-shadow: inset 8px 0 25px rgba(0,0,0,0.05);
+}
+
+.page-ornament {
+    text-align: center;
+    color: #b8860b;
+    font-size: 0.9rem;
+    letter-spacing: 3px;
+}
+
+.page-ornament.bottom {
+    margin-top: auto;
+}
+
+/* ========== ОТОБРАЖЕНИЕ ТЕМЫ ========== */
+.theme-display {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.theme-icon-large {
+    font-size: 4rem;
+    margin-bottom: 15px;
+}
+
+.theme-name-display {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    color: #5c3d2e;
+    font-weight: 600;
+}
+
+.page-decoration {
+    text-align: center;
+    color: #8B4513;
+    font-family: 'Cormorant Garamond', serif;
+    margin-top: 20px;
+}
+
+.page-decoration p {
+    margin: 5px 0;
+    font-size: 1.1rem;
+}
+
+.page-number {
+    position: absolute;
+    bottom: 15px;
+    font-family: 'Cormorant Garamond', serif;
+    color: #8B4513;
+    font-size: 1rem;
+}
+
+.page-number.left { left: 30px; }
+.page-number.right { right: 30px; }
+
+/* ========== ПРЕДСКАЗАНИЕ ========== */
+.prediction-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+}
+
+.prediction-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4rem;
+    color: #d4af37;
+    line-height: 1;
+    opacity: 0.5;
+}
+
+.prediction-quote.end {
+    align-self: flex-end;
+}
+
+.prediction-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    color: #2c1810;
+    text-align: center;
+    line-height: 1.8;
+    font-style: italic;
+    padding: 10px 0;
+    animation: revealText 1.2s ease 1s both;
+}
+
+@keyframes revealText {
+    from {
+        opacity: 0;
+        filter: blur(10px);
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        filter: blur(0);
+        transform: scale(1);
+    }
+}
+
+/* ========== КНОПКИ ДЕЙСТВИЙ ========== */
+.action-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.action-btn {
+    padding: 12px 25px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 1rem;
+    background: transparent;
+    border: 2px solid rgba(212, 175, 55, 0.5);
+    border-radius: 25px;
+    color: #d4af37;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.action-btn:hover {
+    background: rgba(212, 175, 55, 0.1);
+    border-color: #d4af37;
+    transform: translateY(-2px);
+}
+
+.action-btn.primary {
+    background: linear-gradient(135deg, #d4af37, #f0e68c);
+    color: #1a1a2e;
+    border: none;
+}
+
+.action-btn.primary:hover {
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.5);
+}
+
+/* ========== УВЕДОМЛЕНИЕ ========== */
+.notification {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: rgba(212, 175, 55, 0.95);
+    color: #1a1a2e;
+    padding: 15px 30px;
+    border-radius: 10px;
+    font-weight: 500;
+    opacity: 0;
+    transition: all 0.4s ease;
+    z-index: 1000;
+}
+
+.notification.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+/* ========== АДАПТИВНОСТЬ ========== */
+@media (max-width: 800px) {
+    .book {
+        width: 95vw;
+        height: auto;
+        min-height: 500px;
+    }
+    
+    .book-pages {
+        flex-direction: column;
+    }
+    
+    .page {
+        min-height: 250px;
+    }
+    
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    .theme-btn {
+        min-width: 100px;
+        padding: 12px 15px;
+    }
+    
+    .theme-icon {
+        font-size: 1.5rem;
+    }
+    
+    .theme-name {
+        font-size: 0.95rem;
+    }
+    
+    .prediction-text {
+        font-size: 1.2rem;
+    }
+    
+    .control-group input {
+        width: 80px;
+        padding: 12px;
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .book-info {
+        gap: 20px;
+    }
+    
+    .info-number {
+        font-size: 1.5rem;
+    }
+    
+    .theme-buttons {
+        gap: 10px;
+    }
+    
+    .theme-btn {
+        min-width: 80px;
+        padding: 10px;
+    }
+    
+    .theme-desc {
+        display: none;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .action-btn {
+        width: 100%;
+    }
+}
