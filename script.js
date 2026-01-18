@@ -3,7 +3,17 @@
 // ==========================================
 
 document.addEventListener('DOMContentLoaded', () => {
-    
+    // ========== ОТСЛЕЖИВАНИЕ МЕТРИКИ ==========
+    function trackEvent(category, action, label) {
+        if (typeof ym !== 'undefined') {
+            // ЗАМЕНИ ТВОЙ_НОМЕР на номер своего счётчика!
+            ym(106319364, 'reachGoal', action, {
+                category: category,
+                label: label
+            });
+            console.log('Метрика:', category, action, label);
+        }
+    } 
     console.log('Скрипт загружен'); // Проверка
     
     // ========== ЭЛЕМЕНТЫ СТРАНИЦЫ ==========
@@ -130,6 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
             showNotification('Выберите страницу и строку');
             return;
         }
+       trackEvent('Предсказание', 'Открытие', state.selectedTheme);
         
         console.log('Открываем книгу:', state);
         
@@ -179,6 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Поделиться
     function sharePrediction() {
+        trackEvent('Шаринг', 'Поделиться', state.selectedTheme);
         const theme = themes[state.selectedTheme];
         const text = `${theme.icon} ${theme.name} из Книги Судеб:\n\n"${state.currentPrediction}"\n\nСтраница ${state.page}, Строка ${state.line}`;
         
@@ -223,6 +235,7 @@ document.addEventListener('DOMContentLoaded', () => {
             elements.themeButtons.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             state.selectedTheme = btn.dataset.theme;
+            trackEvent('Тема', 'Выбор', state.selectedTheme);
             validateInputs();
         });
     });
@@ -278,3 +291,4 @@ document.addEventListener('DOMContentLoaded', () => {
     
     console.log('Скрипт полностью инициализирован');
 });
+
